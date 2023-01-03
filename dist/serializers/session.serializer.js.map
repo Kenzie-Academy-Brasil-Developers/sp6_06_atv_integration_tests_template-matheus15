@@ -1,0 +1,1 @@
+{"version":3,"file":"session.serializer.js","sourceRoot":"","sources":["../../src/serializers/session.serializer.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;AAAA,yCAA2B;AAG3B,MAAM,qBAAqB,GAA+B,GAAG,CAAC,MAAM,EAAE,CAAC,KAAK,CAAC;IAC3E,KAAK,EAAE,GAAG,CAAC,MAAM,EAAE,CAAC,KAAK,EAAE,CAAC,QAAQ,EAAE;IACtC,QAAQ,EAAE,GAAG,CAAC,MAAM,EAAE,CAAC,QAAQ,EAAE;CAClC,CAAC,CAAC;AAEM,sDAAqB"}

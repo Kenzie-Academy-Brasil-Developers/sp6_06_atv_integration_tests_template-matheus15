@@ -1,36 +1,35 @@
-import { Entity, Column, PrimaryColumn, OneToOne, JoinColumn, OneToMany } from "typeorm";
-import { v4 as uuid } from "uuid"
-import { Buy } from "./buy.entity";
-import { Cart } from "./cart.entity";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  BeforeInsert,
+} from "typeorm";
 
-@Entity()
+import { hash } from "bcryptjs";
+
+@Entity("users")
 export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryColumn('uuid')
-    readonly id: string;
+  @Column()
+  username: string;
 
-    @Column()
-    name: string
+  @Column({ unique: true })
+  email: string;
 
-    @Column({nullable: true})
-    email: string
+  @Column()
+  age: number;
 
-    @Column()
-    password: string
+  @Column()
+  password: string;
 
-    @OneToMany(type => Buy, buy => buy.user, {
-        eager: true
-    })
-    buys: Buy[]
+  @CreateDateColumn()
+  createdAt: Date;
 
-    @OneToOne((type) => Cart, {
-        eager: true
-    })@JoinColumn()
-    cart: Cart
-
-    constructor() {
-        if (!this.id) {
-            this.id = uuid();
-        }
-    }
+  @BeforeInsert()
+  async hashPassword() {
+    this.password = await hash(this.password, 10);
+  }
 }
